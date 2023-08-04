@@ -3,22 +3,23 @@ import { useState } from "react";
 import axios from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
+    username: "",
     email: "",
     password: "",
   });
 
   const handleLogin = async () => {
     try {
-      const result = await axios.post("auth/login", form);
+      const result = await axios.post("auth/register", form);
       console.log(result);
       //   dispatch(getDataUser(result.data.data.userId));
       //   dispatch(getDataBooking(result.data.data.userId));
-      localStorage.setItem("userId", result.data.data.id);
+      //   localStorage.setItem("userId", result.data.data.id);
       alert(result.data.message);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       alert(error.response.data.message);
       //   console.error(error.response);
@@ -30,11 +31,20 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className="register-container">
       <div className="box">
-        <h2>Log In</h2>
+        <h2>Register</h2>
         <div className="form">
           <form>
+            <div className="input-container">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                required
+                onChange={handleChangeForm}
+              />
+            </div>
             <div className="input-container">
               <input
                 type="text"
@@ -53,13 +63,13 @@ export default function Login() {
               />
             </div>
             <div className="button-container">
-              <div className="button" type="button" onClick={handleLogin}>
+              <button className="button" type="button" onClick={handleLogin}>
                 <p>Log In</p>
-              </div>
+              </button>
             </div>
           </form>
           <p>
-            Don&apos;t have account? <a href="/register">Register</a>
+            Already have account? <a href="/login">Log In</a>
           </p>
         </div>
       </div>

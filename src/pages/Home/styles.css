@@ -1,0 +1,32 @@
+.home-title {
+  font-family: "Kalam", cursive;
+}
+
+.home-search {
+  border: 2px solid red;
+  width: 14rem;
+  height: 2rem;
+  border-radius: 8px;
+  margin-top: 3rem;
+}
+
+input {
+  border: none;
+  outline: none;
+  width: 95%;
+}
+
+.home-row {
+  display: flex;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 800px) {
+  .home-title {
+    display: flex;
+    justify-content: center;
+  }
+}
