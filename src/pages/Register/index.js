@@ -14,7 +14,7 @@ export default function Register() {
   const handleLogin = async () => {
     try {
       const result = await axios.post("auth/register", form);
-      console.log(result);
+
       //   dispatch(getDataUser(result.data.data.userId));
       //   dispatch(getDataBooking(result.data.data.userId));
       //   localStorage.setItem("userId", result.data.data.id);
