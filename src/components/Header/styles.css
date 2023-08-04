@@ -15,6 +15,7 @@ header {
   list-style: none;
   /* width: 40%; */
   display: flex;
+  justify-content: space-between;
 }
 
 .nav__item {

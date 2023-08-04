@@ -1,0 +1,47 @@
+.detail-container {
+  margin-top: 3rem;
+}
+
+.detail-container img {
+  border: 2px solid #136c72;
+  width: 20rem;
+}
+
+.detail-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detail-hero h1 {
+  font-family: "Kalam", cursive;
+  color: aliceblue;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #136c72;
+}
+.detail-desc {
+  padding-bottom: 5rem;
+}
+
+.detail-desc .price {
+  padding-bottom: 2rem;
+}
+@media (min-width: 800px) {
+  .detail-container img {
+    width: 25rem;
+  }
+
+  .detail-hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 5rem;
+  }
+
+  .detail-hero h1 {
+    width: 230%;
+  }
+  .detail-hero label {
+  }
+}

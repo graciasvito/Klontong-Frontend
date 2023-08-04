@@ -8,7 +8,7 @@ export default function Header() {
           <nav className="nav">
             <ul className="nav__list">
               <li className="nav__item">
-                <a href="#" className="nav__link">
+                <a href="/" className="nav__link">
                   Klontong
                 </a>
               </li>
