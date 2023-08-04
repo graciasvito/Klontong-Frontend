@@ -23,10 +23,40 @@ input {
 .search-button {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
+.card {
+  /* background: black; */
+  width: 8rem;
+  margin-right: 5rem;
+}
+
+.card .item {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
+.card img {
+  width: 5rem;
+}
+
 @media (min-width: 800px) {
   .home-title {
     display: flex;
     justify-content: center;
+  }
+
+  .card-item {
+    display: flex;
+  }
+
+  .card {
+    /* background: black; */
+    width: 20rem;
+    margin-right: 5rem;
+  }
+
+  .card img {
+    width: 20rem;
   }
 }
