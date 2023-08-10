@@ -16,7 +16,7 @@ export default function Login() {
 
       //   dispatch(getDataUser(result.data.data.userId));
       //   dispatch(getDataBooking(result.data.data.userId));
-      localStorage.setItem("userId", result.data.data.id);
+      localStorage.setItem("userId", result.data.data.userId);
       alert(result.data.message);
       navigate("/");
     } catch (error) {

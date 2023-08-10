@@ -101,7 +101,7 @@ export default function Home() {
             <input
               className=""
               placeholder="Search Item"
-              name="srch-term"
+              name="srch-ter"
               id="srch-term1"
               type="text"
               onChange={(e) => {
