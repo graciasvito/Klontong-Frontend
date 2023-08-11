@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import axios from "../../utils/axios";
 import { useEffect, useState } from "react";
 import "./styles.css";
@@ -36,7 +37,7 @@ export default function Detail() {
             </div>
           </div>
         </div>
-        <Header />
+        <Footer />
       </div>
     </>
   );

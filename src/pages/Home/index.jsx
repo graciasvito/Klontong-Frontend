@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import axios from "../../utils/axios";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -94,149 +95,160 @@ export default function Home() {
 
   return (
     <>
-      <div className="container">
+      <div className="home-container">
         <Header />
-        <div className="header-container">
-          <form className="home-search header-container home-row" role="search">
-            <input
-              className=""
-              placeholder="Search Item"
-              name="srch-ter"
-              id="srch-term1"
-              type="text"
-              onChange={(e) => {
-                setKeyword(e.target.value);
-              }}
-            />
-            <div className="search-button">
-              <a
-                className="btn home-button-color mr-3"
-                type="button"
-                onClick={handleSearch}
-              >
-                <ion-icon name="search-outline"></ion-icon>
-              </a>
+        <div>
+          <div className="header-container">
+            <form className="home-search header-container home-row">
+              <input
+                placeholder="Search Item"
+                type="text"
+                onChange={(e) => {
+                  setKeyword(e.target.value);
+                }}
+              />
+              <div className="search-button">
+                <a
+                  className="btn home-button-color mr-3"
+                  type="button"
+                  onClick={handleSearch}
+                >
+                  <ion-icon name="search-outline"></ion-icon>
+                </a>
+              </div>
+            </form>
+            <div className="home-title">
+              <h1>Belanjamu disini aja</h1>
             </div>
-          </form>
-          <div className="home-title">
-            <h1>Belanjamu disini aja</h1>
+          </div>
+          <div className="header-container">
+            <Button onClick={handleOpen}>Add Product</Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Add New Product
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  <form className="modal-body" onSubmit={handleSubmit}>
+                    <label>Category Id</label>
+                    <input
+                      type="text"
+                      name="categoryId"
+                      onChange={handleChangeForm}
+                    />
+                    <label>Category Name</label>
+                    <input
+                      type="text"
+                      name="categoryName"
+                      onChange={handleChangeForm}
+                    />
+                    <label>SKU</label>
+                    <input type="text" name="sku" onChange={handleChangeForm} />
+                    <label>Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      onChange={handleChangeForm}
+                    />
+                    <label>Description</label>
+                    <input
+                      type="text"
+                      name="description"
+                      onChange={handleChangeForm}
+                    />
+
+                    <label>Weight</label>
+                    <input
+                      type="text"
+                      name="weight"
+                      onChange={handleChangeForm}
+                    />
+                    <label>Width</label>
+                    <input
+                      type="text"
+                      name="width"
+                      onChange={handleChangeForm}
+                    />
+                    <label>Length</label>
+                    <input
+                      type="text"
+                      name="length"
+                      onChange={handleChangeForm}
+                    />
+                    <label>height</label>
+                    <input
+                      type="text"
+                      name="height"
+                      onChange={handleChangeForm}
+                    />
+                    <label>Price</label>
+                    <input
+                      type="text"
+                      name="price"
+                      onChange={handleChangeForm}
+                    />
+                    <label>Image</label>
+                    <input
+                      type="text"
+                      name="Image"
+                      onChange={handleChangeForm}
+                      value={form.detail}
+                    />
+                    <div className="modal-footer">
+                      <button type="submit">
+                        <div>Add Product</div>
+                      </button>
+                    </div>
+                  </form>
+                </Typography>
+              </Box>
+            </Modal>
+          </div>
+          <div className="card-item header-container">
+            {data.length > 0 ? (
+              data.map((item) => (
+                <div
+                  className="card"
+                  key={item.id}
+                  onClick={() => {
+                    navigate(`/detail/${item.id}`);
+                  }}
+                >
+                  <img src={item.image} alt="Image Product" />
+                  <p className="item">{item.name}</p>
+                  <p className="price">Rp{item.harga}</p>
+                  {/* <p>{item.description}</p> */}
+                </div>
+              ))
+            ) : (
+              <div className="text-center">
+                <h3>Product not found</h3>
+              </div>
+            )}
+          </div>
+          <div className="pagination header-container">
+            <button
+              className="btn btn-primary"
+              onClick={handlePrevPage}
+              disabled={page === 1 ? true : false}
+            >
+              &lt;
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={handleNextPage}
+              disabled={page === pagination.totalPage ? true : false}
+            >
+              &gt;
+            </button>
           </div>
         </div>
-        <div className="header-container">
-          <Button onClick={handleOpen}>Add Product</Button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Add New Product
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <form className="modal-body" onSubmit={handleSubmit}>
-                  <label>Category Id</label>
-                  <input
-                    type="text"
-                    name="categoryId"
-                    onChange={handleChangeForm}
-                  />
-                  <label>Category Name</label>
-                  <input
-                    type="text"
-                    name="categoryName"
-                    onChange={handleChangeForm}
-                  />
-                  <label>SKU</label>
-                  <input type="text" name="sku" onChange={handleChangeForm} />
-                  <label>Name</label>
-                  <input type="text" name="name" onChange={handleChangeForm} />
-                  <label>Description</label>
-                  <input
-                    type="text"
-                    name="description"
-                    onChange={handleChangeForm}
-                  />
-
-                  <label>Weight</label>
-                  <input
-                    type="text"
-                    name="weight"
-                    onChange={handleChangeForm}
-                  />
-                  <label>Width</label>
-                  <input type="text" name="width" onChange={handleChangeForm} />
-                  <label>Length</label>
-                  <input
-                    type="text"
-                    name="length"
-                    onChange={handleChangeForm}
-                  />
-                  <label>height</label>
-                  <input
-                    type="text"
-                    name="height"
-                    onChange={handleChangeForm}
-                  />
-                  <label>Price</label>
-                  <input type="text" name="price" onChange={handleChangeForm} />
-                  <label>Image</label>
-                  <input
-                    type="text"
-                    name="Image"
-                    onChange={handleChangeForm}
-                    value={form.detail}
-                  />
-                  <div className="modal-footer">
-                    <button type="submit">
-                      <div>Add Product</div>
-                    </button>
-                  </div>
-                </form>
-              </Typography>
-            </Box>
-          </Modal>
-        </div>
-        <div className="card-item header-container">
-          {data.length > 0 ? (
-            data.map((item) => (
-              <div
-                className="card"
-                key={item.id}
-                onClick={() => {
-                  navigate(`/detail/${item.id}`);
-                }}
-              >
-                <img src={item.image} alt="Image Product" />
-                <p className="item">{item.name}</p>
-                <p className="price">Rp{item.harga}</p>
-                {/* <p>{item.description}</p> */}
-              </div>
-            ))
-          ) : (
-            <div className="text-center">
-              <h3>Loading...</h3>
-            </div>
-          )}
-        </div>
-        <div className="pagination header-container">
-          <button
-            className="btn btn-primary"
-            onClick={handlePrevPage}
-            disabled={page === 1 ? true : false}
-          >
-            &lt;
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={handleNextPage}
-            disabled={page === pagination.totalPage ? true : false}
-          >
-            &gt;
-          </button>
-        </div>
-        <Header />
+        <Footer />
       </div>
     </>
   );

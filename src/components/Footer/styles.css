@@ -1,0 +1,11 @@
+footer {
+  background: #136c72;
+}
+
+.footer nav {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: aliceblue;
+  height: 4rem;
+}

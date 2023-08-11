@@ -1,6 +1,10 @@
 import "./styles.css";
 
 export default function Header() {
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    alert("Already Log out");
+  };
   return (
     <>
       <header>
@@ -10,6 +14,11 @@ export default function Header() {
               <li className="nav__item">
                 <a href="/" className="nav__link">
                   Klontong
+                </a>
+              </li>
+              <li className="nav__item">
+                <a href="/" className="nav__link" onClick={handleLogout}>
+                  Log Out
                 </a>
               </li>
             </ul>
