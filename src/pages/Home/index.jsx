@@ -101,6 +101,7 @@ export default function Home() {
           <div className="header-container">
             <form className="home-search header-container home-row">
               <input
+                className="input-search"
                 placeholder="Search Item"
                 type="text"
                 onChange={(e) => {
